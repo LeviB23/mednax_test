@@ -3,4 +3,4 @@ set -e
 
 python3 -m pip install -r requirements.txt
 
-pytest
+python3 -m pytest -p no:cacheprovider
