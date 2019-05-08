@@ -35,3 +35,6 @@ class Pencil():
 
 			if character != ' ' and self.lead_left > 0:
 				self.lead_left -= 1
+
+	def sharpen(self):
+		self.lead_left = self.lead_durability
