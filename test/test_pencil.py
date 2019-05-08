@@ -38,6 +38,13 @@ class TestPencil:
 		assert pencil.eraser_left == 46
 		assert pencil.written_text == 'Hello d'
 
+	def test_erase_extra(self):
+		pencil = Pencil(50, 3)
+		pencil.write('Hello world')
+		pencil.erase('worl')
+		assert pencil.eraser_left == 0
+		assert pencil.written_text == 'Hello ld'
+
 	def test_edit(self):
 		pencil = Pencil(50, 50)
 		pencil.write('Hello world')

@@ -25,12 +25,14 @@ class Pencil():
 		self.lead_left = self.lead_durability
 
 	def erase(self, text):
-		last_index = self.written_text.rfind(text)
 		text_count = len(text)
-		blank_count = text.count(' ')
+		if self.eraser_left - text_count < 0:
+			text = text[:self.eraser_left]
+			text_count = len(text)
+		self.eraser_left -= text_count
+		last_index = self.written_text.rfind(text)
 		self.written_text = self.written_text[:last_index] +self.written_text[(last_index+text_count):]
-		self.eraser_left -= (text_count - blank_count)
-
+		
 	def edit(self, index, text):
 		characters = list(text)
 		written_list = list(self.written_text)
