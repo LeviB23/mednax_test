@@ -31,3 +31,15 @@ class TestPencil:
 		pencil.erase('world')
 		assert pencil.eraser_left == 45
 		assert pencil.written_text == 'Hello '
+
+	def test_edit(self):
+		pencil = new Pencil(50, 50)
+		pencil.write('Hello world')
+		pencil.edit(6, 'Susan')
+		assert pencil.written_text == 'Hello @@@@@'
+
+	def test_edit_multiple_whitespace(self):
+		pencil = new Pencil(50, 50)
+		pencil.write('Hello    world')
+		pencil.edit(6, 'Susan')
+		assert pencil.written_text == 'Hello Sus@@rld'
