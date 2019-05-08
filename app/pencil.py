@@ -9,21 +9,6 @@ class Pencil():
 
 	def write(self, text):
 		characters = list(text)
-		# count_blank = characters.count(' ')
-		# count_diff = self.lead_left - (len(characters) - count_blank)
-		# if count_diff < 0:
-		# 	self.lead_left = 0
-		# 	del characters[abs(count_diff):len(characters)]
-		# 	blank_list = [' ' for i in range(abs(count_diff))]
-			# characters = characters + blank_list
-		# else:
-		# 	self.lead_left = count_diff
-
-		# print(characters)
-
-		# if not self.written_text.endswith(' ') and self.written_text != '':
-		# 	self.written_text += ' '
-		# self.written_text += ''.join(characters)
 		if not self.written_text.endswith(' ') and self.written_text != '' and self.lead_left > 0:
 			self.written_text += ' '
 
@@ -38,3 +23,13 @@ class Pencil():
 
 	def sharpen(self):
 		self.lead_left = self.lead_durability
+
+	def erase(self, text):
+		last_index = self.written_text.rfind(text)
+		text_count = len(text)
+		blank_count = text.count(' ')
+		self.written_text = self.written_text[:last_index] +self.written_text[(last_index+text_count):]
+		self.eraser_left -= (text_count - blank_count)
+
+	def edit(self, index, text):
+		return False

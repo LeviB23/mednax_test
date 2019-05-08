@@ -34,9 +34,9 @@ class TestPencil:
 	def test_erase(self):
 		pencil = Pencil(50, 50)
 		pencil.write('Hello world')
-		pencil.erase('world')
-		assert pencil.eraser_left == 45
-		assert pencil.written_text == 'Hello '
+		pencil.erase('worl')
+		assert pencil.eraser_left == 46
+		assert pencil.written_text == 'Hello d'
 
 	def test_edit(self):
 		pencil = Pencil(50, 50)
