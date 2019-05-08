@@ -19,6 +19,12 @@ class TestPencil:
 		assert pencil.written_text == 'Hello world what a great day'
 		assert pencil.lead_left == 27
 
+	def test_write_extra(self):
+		pencil = Pencil(5, 5)
+		pencil.write('Hello world')
+		assert pencil.written_text == 'Hello      '
+		assert pencil.lead_left == 0
+
 	def test_sharpen(self):
 		pencil = Pencil(50, 50)
 		pencil.write('Hello world')
