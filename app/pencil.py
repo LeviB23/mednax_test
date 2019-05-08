@@ -32,4 +32,17 @@ class Pencil():
 		self.eraser_left -= (text_count - blank_count)
 
 	def edit(self, index, text):
-		return False
+		characters = list(text)
+		written_list = list(self.written_text)
+		blank_count = text.count(' ')
+		text_count = len(text)
+		curr_index = index
+		for character in characters:
+			if written_list[curr_index] == ' ':
+				written_list[curr_index] = character
+			else:
+				written_list[curr_index] = '@'
+			curr_index += 1
+			if character != ' ' and self.lead_left > 0:
+				self.lead_left -= 1
+		self.written_text = ''.join(written_list)
